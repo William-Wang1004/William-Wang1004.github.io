@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<h1 id="one" onclick="hide()"></h1>
+    <button onclick="greeting()">1</button>
+    <button onclick="age()">age</button>
+    <input id="input">
+    <button onclick="sub()">sub</button>
+    <button onclick="three()">3</button>
+    <button onclick="four()">4</button>
+    <button onclick="five()">5</button>
+    <button onclick="six()">6</button>
+    <script>
+	    window.onload=function(){
+		    var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+            alert(today);
+            document.getElementById('one').innerHTML='HELLO WORLD';
+	    }
+        function greeting(){
+            var name = prompt(name);
+            var today = new Date();
+            var hour = today.getHours()
+            if (hour < 12) {
+                alert('morning '+ name);
+            } 
+            else if (hour < 18) {
+                alert('afternoon ' + name);
+            } 
+            else {
+                alert('evening ' + name);
+            }
+        }
+        function age(){
+            var age = prompt(age);
+            if (age < 10) {
+                alert('you are too young');
+            } 
+        }
+        function hide(){
+            document.getElementById('one').style.display = 'none';
+        }
+        function sub(){
+            let name = document.getElementById('input').value;
+            if(name[0] >= 'X' && name[0] <= 'Z'){
+                alert('rare name');
+            }
+            if(name.length>8){
+                alert('long name');
+            }
+            if(/[0-9]/.test(name)==true){
+                alert('typo found!')
+            }
+        }
+        function three(){
+            let number = Math.floor(Math.random()*10 + 1);
+            for(let i = 0; i < 3;i++){
+                let guess = prompt('guess');
+                if (number > guess){
+                    alert('small');
+                }
+                else if (number < guess){
+                    alert('great');
+                }
+                else{
+                    alert('win!');
+                    break;
+                }
+            }
+        }
+        function four(){
+            document.getElementById('one').style.display = 'block';
+            document.getElementById('one').innerHTML='change';
+            document.getElementById('one').style.textShadow='2px 2px red';
+            document.getElementById('one').style.fontFamily='impact';
+            document.getElementById('one').style.color='rgba(0,0,0,.5)';
+        }
+        const N = [];
+        function five(){
+            N.splice(0,5);
+            for(let i = 0; i < 5;i++){
+                let number = Math.floor(Math.random()*1000 + 1);
+                N.push(number);
+            }
+            alert(N)
+        }
+        function six(){
+            N.sort(function(a, b){return a - b});
+            alert(' min:' + N[0] + ' max:' + N[4]);
+        }
+    </script>
+</body>
+</html>
